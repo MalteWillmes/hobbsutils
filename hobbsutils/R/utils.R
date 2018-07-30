@@ -1,5 +1,5 @@
 .onAttach <- function(libname, pkgname) {
-  packageStartupMessage("><(((°> ><(((°> ><(((°> Welcome to the Hobbslab utility package <°)))>< <°)))>< <°)))>< ")
+  packageStartupMessage("><(((O> ><(((O> ><(((O> Welcome to the Hobbslab utility package <O)))>< <O)))>< <O)))>< ")
   
 }
 
