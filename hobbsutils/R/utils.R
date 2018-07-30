@@ -1,0 +1,21 @@
+ec_2_sal = Vectorize(function(temp, cond){
+  ref_cond = 42914
+  cond_rat = cond/ref_cond
+  rt = 0.6766097 +
+    (0.0200564*temp) +
+    (0.0001104259*(temp^2)) +
+    ((-6.9698*10^-7)*(temp^3)) +
+    ((1.0031*10^-9)*temp^4)
+  Rt = cond_rat/rt
+  dS = ((temp-15)/(1+0.0162*(temp-15)))*(0.0005+(-0.0056)*(Rt^0.5)+(-0.0066)*Rt+(-0.0375)*(Rt^1.5)+(0.0636)*(Rt^2)+(-0.0144)*(Rt^2.5))
+  if(cond > 3000){
+    sal = 0.008+ (-0.1692)*(Rt^0.5)+25.3851*Rt+14.0941*(Rt^1.5)+(-7.0261)*(Rt^2)+2.7081*(Rt^2.5)+dS
+  } else if (cond <=3000) {
+    sal = (0.008+ (-0.1692)*(Rt^0.5)+25.3851*Rt+14.0941*(Rt^1.5)+(-7.0261)*(Rt^2)+2.7081*(Rt^2.5)+dS)-(0.008/(1+(1.5*(400*Rt))+((400*Rt)^2))-(0.0005*(temp-15)/(1+0.0162*(temp-15)))/(1+((100*Rt)^0.5)+((100*Rt)^1.5)))
+  }
+})
+
+sr_2_sal = Vectorize(function(sr, srfw = 0.705781, srmar = 0.70918,confw = 103.8, conmar = 7900){
+  sal = (((0.01*srmar*conmar) - (0.01*sr*conmar) - (32*srmar*conmar) + (32*sr*conmar))/
+           ((sr*confw) - (sr*conmar) - (srfw*confw) + (srmar*conmar))) + 32
+})
