@@ -36,9 +36,11 @@ sr_2_sal = Vectorize(function(sr, srfw = 0.705781, srmar = 0.70918,confw = 103.8
   if(sr < min(srfw, srmar)| sr > max(srfw, srmar)) {
     warning('Your measured strontium ratio is outside the bounds of your two endmembers, make sure that srfw and srmar are set correctly',
             call. = F, immediate. = T)
+    return(NULL)
   } else{
     sal = (((0.01*srmar*conmar) - (0.01*sr*conmar) - (32*srmar*conmar) + (32*sr*conmar))/
              ((sr*confw) - (sr*conmar) - (srfw*confw) + (srmar*conmar))) + 32
+    return(sal)
   }
 
 })
