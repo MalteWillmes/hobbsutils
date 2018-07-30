@@ -1,9 +1,9 @@
 Package: hobbsutils
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Utility Functions for Data Analysis in the HobbsLab at UC Davis
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
+Author: Christian Denny
+Maintainer: The package maintainer <christian.denney@gmail.com>
 Description: More about what it does (maybe more than one line)
     Use four spaces when indenting paragraphs within the Description.
 License: What license is it under?
