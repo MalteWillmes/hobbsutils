@@ -12,7 +12,7 @@ ec_2_sal(temp, cond)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{temp}{Temperature (degrees Celsius, °C)}
+  \item{temp}{Temperature (degrees Celsius, C)}
   \item{cond}{Conductivitiy (microsiemens, uS)
 }
 \details{

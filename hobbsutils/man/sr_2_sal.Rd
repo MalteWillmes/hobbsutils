@@ -1,7 +1,7 @@
 \name{sr_2_sal}
 \alias{sr_2_sal}
 %- Also NEED an '\alias' for EACH other topic documented here.
-\title{Convert measured Strontium ratio to salinity
+\title{Convert measured 87Sr/86Sr isotope ratio to salinity
 
 }
 \description{
