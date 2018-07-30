@@ -1,3 +1,8 @@
+.onAttach <- function(libname, pkgname) {
+  packageStartupMessage("><(((°> ><(((°> ><(((°> Welcome to the Hobbslab utility package <°)))>< <°)))>< <°)))>< ")
+  
+}
+
 ec_2_sal = Vectorize(function(temp, cond){
   ref_cond = 42914
   cond_rat = cond/ref_cond
