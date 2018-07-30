@@ -2,7 +2,7 @@ Package: hobbsutils
 Type: Package
 Title: Utility Functions for Data Analysis in the HobbsLab
 Version: 0.1.0
-Author: Christian Denny
+Author: Christian Denney
 Maintainer: The package maintainer <christian.denney@gmail.com>
 Description: More about what it does (maybe more than one line)
     Use four spaces when indenting paragraphs within the Description.
