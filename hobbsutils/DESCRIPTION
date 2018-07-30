@@ -1,6 +1,6 @@
 Package: hobbsutils
 Type: Package
-Title: Utility Functions for Data Analysis in the HobbsLab at UC Davis
+Title: Utility Functions for Data Analysis in the HobbsLab
 Version: 0.1.0
 Author: Christian Denny
 Maintainer: The package maintainer <christian.denney@gmail.com>
