@@ -44,3 +44,7 @@ sr_2_sal = Vectorize(function(sr, srfw = 0.705264, srmar = 0.70918,confw = 74.6,
   }
 
 })
+
+bim = Vectorize(function(fl, hl, gt) {
+  fl + ((gt - max(gt))*(fl) - hl)/(max(gt) - min(gt))
+})

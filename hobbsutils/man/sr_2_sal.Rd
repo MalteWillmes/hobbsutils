@@ -1,11 +1,11 @@
 \name{sr_2_sal}
 \alias{sr_2_sal}
 %- Also NEED an '\alias' for EACH other topic documented here.
-\title{Convert measured 87Sr/86Sr isotope ratio to salinity
+\title{Convert measured Strontium ratio to salinity
 
 }
 \description{
-This function calculates salinity from measured 87Sr/86Sr using a 2 end member mixing model. It requires the measured Sr ratio, Endmember 1 87Sr/86Sr, Endmember 2 87Sr/86Sr, Sr concentrations for each, and salinity of the two endmembers. Default values only correct for Sacramento Delta
+This function calculates salinity from measured Sr using a 2 end member mixing model. It requires the measured Sr ratio, Endmember 1 Strontium, Endmember 2 Strontium, concentrations for each, and salinity of the two endmembers. Default values only correct for Sacramento Delta
 }
 \usage{
 sr_2_sal(sr, srfw = 0.705781, srmar = 0.70918, confw = 103.8, conmar = 7900)
@@ -14,8 +14,8 @@ sr_2_sal(sr, srfw = 0.705781, srmar = 0.70918, confw = 103.8, conmar = 7900)
 
 \arguments{
   \item{sr}{Measured strontium. Should be giving as the ratio of Sr87/Sr86.}
-  \item{srfw}{87Sr/86Sr of freshwater (or endmember 1).}
-  \item{srmar}{87Sr/86Sr of the ocean (or endmember 2).}
+  \item{srfw}{Strontium ratio of freshwater (or endmember 1).}
+  \item{srmar}{Strontium ratio of the ocean (or endmember 2).}
   \item{confw}{Concentation (parts per million) of Strontium in freshwater (or endmember 1).}
   \item{conmar}{Concentration (parts per million) of Strontium in the ocean (or endmember 2).}
 }
@@ -51,5 +51,5 @@ sr_2_sal(sr, srfw = 0.705781, srmar = 0.70918, confw = 103.8, conmar = 7900)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{ ~kwd1 }% use one of  RShowDoc("KEYWORDS")
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+\keyword{}% use one of  RShowDoc("KEYWORDS")
+\keyword{}% __ONLY ONE__ keyword per line

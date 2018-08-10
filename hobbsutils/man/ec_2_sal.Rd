@@ -5,14 +5,14 @@
 %%  ~~function to do ... ~~
 }
 \description{
-%%  This function converts electrical conductivity to salinity given temperature and the measured conductivity
+This function converts electrical conductivity to salinity given temperature and the measured conductivity
 }
 \usage{
 ec_2_sal(temp, cond)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{temp}{Temperature (degrees Celsius, C)}
+  \item{temp}{Temperature (degrees Celsius, ?C)}
   \item{cond}{Conductivitiy (microsiemens, uS)
 }
 \details{
@@ -47,5 +47,5 @@ ec_2_sal(temp, cond)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{}% use one of  RShowDoc("KEYWORDS")
-\keyword{}% __ONLY ONE__ keyword per line
+\keyword{ ~kwd1 }% use one of  RShowDoc("KEYWORDS")
+\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
