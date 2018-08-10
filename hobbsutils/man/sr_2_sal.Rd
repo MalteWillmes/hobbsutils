@@ -8,7 +8,7 @@
 This function calculates salinity from measured Sr using a 2 end member mixing model. It requires the measured Sr ratio, Endmember 1 Strontium, Endmember 2 Strontium, concentrations for each, and salinity of the two endmembers. Default values only correct for Sacramento Delta
 }
 \usage{
-sr_2_sal(sr, srfw = 0.705781, srmar = 0.70918, confw = 103.8, conmar = 7900)
+sr_2_sal(sr, srfw = 0.705781, srmar = 0.70918, confw = 103.8, conmar = 7900, salfw = 0.1, salmar = 31.8)
 
 }
 
@@ -18,6 +18,8 @@ sr_2_sal(sr, srfw = 0.705781, srmar = 0.70918, confw = 103.8, conmar = 7900)
   \item{srmar}{Strontium ratio of the ocean (or endmember 2).}
   \item{confw}{Concentation (parts per million) of Strontium in freshwater (or endmember 1).}
   \item{conmar}{Concentration (parts per million) of Strontium in the ocean (or endmember 2).}
+  \item{salfw}{Salinity of freshwater (or endmember 1).}
+  \item{salmar}{Salinity of the ocean (or endmember 2).}
 }
 \details{
 %%  ~~ If necessary, more details than the description above ~~
