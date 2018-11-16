@@ -43,7 +43,7 @@ sr_2_sal = function(sr, srfw = 0.705264, srmar = 0.70918,confw = 74.6, conmar = 
     return(sal)
   }
 
-})
+}
 
 sal_2_sr = function(sal, srfw = 0.705264, srmar = 0.70918, confw = 74.6, conmar = 6819, salfw = 0.1, salmar = 31.8) {
   if(sal < min(salfw, salmar) | sal > max(salfw, salmar)) {
