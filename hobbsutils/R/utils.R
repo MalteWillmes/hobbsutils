@@ -1,9 +1,9 @@
-.onAttach <- function(libname, pkgname) {
+    .onAttach <- function(libname, pkgname) {
   packageStartupMessage("><(((O> ><(((O> ><(((O> Welcome to the Hobbslab utility package <O)))>< <O)))>< <O)))>< ")
 
 }
 
-ec_2_sal = Vectorize(function(temp, cond){
+ec_2_sal = function(temp, cond){
   ref_cond = 42914
   cond_rat = cond/ref_cond
   rt = 0.6766097 +
@@ -30,9 +30,9 @@ ec_2_sal = Vectorize(function(temp, cond){
     }
     return(sal)
   }
-})
+}
 
-sr_2_sal = Vectorize(function(sr, srfw = 0.705264, srmar = 0.70918,confw = 74.6, conmar = 6819,salfw = 0.1,salmar = 31.8){
+sr_2_sal = function(sr, srfw = 0.705264, srmar = 0.70918,confw = 74.6, conmar = 6819,salfw = 0.1,salmar = 31.8){
   if(sr < min(srfw, srmar)| sr > max(srfw, srmar)) {
     warning('Your measured strontium ratio is outside the bounds of your two endmembers, make sure that srfw and srmar are set correctly',
             call. = F, immediate. = T)
@@ -43,7 +43,7 @@ sr_2_sal = Vectorize(function(sr, srfw = 0.705264, srmar = 0.70918,confw = 74.6,
     return(sal)
   }
 
-})
+}
 
 sal_2_sr = function(sal, srfw = 0.705264, srmar = 0.70918, confw = 74.6, conmar = 6819, salfw = 0.1, salmar = 31.8) {
   if(sal < min(salfw, salmar) | sal > max(salfw, salmar)) {
