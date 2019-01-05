@@ -3,7 +3,7 @@
 
 }
 
-ec_2_sal =function(temp, cond){
+ec_2_sal = Vectorize(function(temp, cond){
   ref_cond = 42914
   cond_rat = cond/ref_cond
   rt = 0.6766097 +
@@ -29,33 +29,32 @@ ec_2_sal =function(temp, cond){
       sal = (0.008+ (-0.1692)*(Rt^0.5)+25.3851*Rt+14.0941*(Rt^1.5)+(-7.0261)*(Rt^2)+2.7081*(Rt^2.5)+dS)-(0.008/(1+(1.5*(400*Rt))+((400*Rt)^2))-(0.0005*(temp-15)/(1+0.0162*(temp-15)))/(1+((100*Rt)^0.5)+((100*Rt)^1.5)))
     }
     return(sal)
-}}
+  }
+})
 
+sr_2_sal = Vectorize(function(sr, srfw = 0.705264, srmar = 0.70918,confw = 74.6, conmar = 6819,salfw = 0.1,salmar = 31.8){
+  if(sr < min(srfw, srmar)| sr > max(srfw, srmar)) {
+    warning('Your measured strontium ratio is outside the bounds of your two endmembers, make sure that srfw and srmar are set correctly',
+            call. = F, immediate. = T)
+    return(NULL)
+  } else{
+    sal = (((salfw*srmar*conmar) - (salfw*sr*conmar) - (salmar*srmar*conmar) + (salmar*sr*conmar))/
+             ((sr*confw) - (sr*conmar) - (srfw*confw) + (srmar*conmar))) + salmar
+    return(sal)
+  }
 
-
-
-
-sr_2_sal = function(sr, srfw = 0.705264, srmar = 0.70918,confw = 74.6, conmar = 6819,salfw = 0.1,salmar = 31.8){
-  # if(sr < min(srfw, srmar)| sr > max(srfw, srmar) {
-  #   warning('Your measured strontium ratio is outside the bounds of your two endmembers, make sure that srfw and srmar are set correctly',
-  #           call. = F, immediate. = T)
-  #   return(NULL)
-  # } else{
-  sal = (((salfw*srmar*conmar) - (salfw*sr*conmar) - (salmar*srmar*conmar) + (salmar*sr*conmar))/
-           ((sr*confw) - (sr*conmar) - (srfw*confw) + (srmar*conmar))) + salmar
-  return(sal)
-}
+})
 
 sal_2_sr = function(sal, srfw = 0.705264, srmar = 0.70918, confw = 74.6, conmar = 6819, salfw = 0.1, salmar = 31.8) {
-  # if(sal < min(salfw, salmar) | sal > max(salfw, salmar)) {
-  #   warning('Your measured salinity is outside the bounds of your two endmembers, make sure that salfw and salmar are set correctly',
-  #           call. = F, immediate. = T)
-  #   return(NULL)
-  # } else {
-  sr = ((((srfw*confw*sal)-(srfw*confw*salmar))/(salfw - salmar))+(srmar*conmar)-(((srmar*conmar*sal)-(srmar*conmar*salmar))/(salfw - salmar)))/
-    ((((confw*sal)-(confw*salmar))/(salfw - salmar))+(conmar)-(((conmar*sal)-(conmar*salmar))/(salfw-salmar)))
-  return(sr)
-  # }
+  if(sal < min(salfw, salmar) | sal > max(salfw, salmar)) {
+    warning('Your measured salinity is outside the bounds of your two endmembers, make sure that salfw and salmar are set correctly',
+            call. = F, immediate. = T)
+    return(NULL)
+  } else {
+    sr = ((((srfw*confw*sal)-(srfw*confw*salmar))/(salfw - salmar))+(srmar*conmar)-(((srmar*conmar*sal)-(srmar*conmar*salmar))/(salfw - salmar)))/
+      ((((confw*sal)-(confw*salmar))/(salfw - salmar))+(conmar)-(((conmar*sal)-(conmar*salmar))/(salfw-salmar)))
+    return(sr)
+  }
 }
 
 bim = function(fl, hl, gt) {
