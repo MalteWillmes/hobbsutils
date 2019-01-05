@@ -21,7 +21,6 @@ sal_2_sr(sal, srfw = 0.705781, srmar = 0.70918, confw = 103.8, conmar = 7900, sa
   \item{salmar}{Salinity of the ocean (or endmember 2).}
 %%     ~~Describe \code{x} here~~
 }
-}
 \details{
 %%  ~~ If necessary, more details than the description above ~~
 }
