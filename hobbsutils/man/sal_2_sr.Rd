@@ -47,7 +47,7 @@ sal_2_sr(sal, srfw = 0.705781, srmar = 0.70918, confw = 103.8, conmar = 7900, sa
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-
+}
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
 \keyword{}% use one of  RShowDoc("KEYWORDS")
