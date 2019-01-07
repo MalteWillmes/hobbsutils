@@ -35,6 +35,7 @@ ec_2_sal = function(temp, cond){
 }
 
 sr_2_sal = function(sr, srfw = 0.705264, srmar = 0.70918,confw = 74.6, conmar = 6819,salfw = 0.1,salmar = 31.8){
+  if(is.na(sr)){return(NA)}
   if(sr < min(srfw, srmar)| sr > max(srfw, srmar)) {
     warning('Your measured strontium ratio is outside the bounds of your two endmembers, make sure that srfw and srmar are set correctly',
             call. = F, immediate. = T)
@@ -48,6 +49,7 @@ sr_2_sal = function(sr, srfw = 0.705264, srmar = 0.70918,confw = 74.6, conmar = 
 }
 
 sal_2_sr = function(sal, srfw = 0.705264, srmar = 0.70918, confw = 74.6, conmar = 6819, salfw = 0.1, salmar = 31.8) {
+  if(is.na(sr)){return(NA)}
   if(sal < min(salfw, salmar) | sal > max(salfw, salmar)) {
     warning('Your measured salinity is outside the bounds of your two endmembers, make sure that salfw and salmar are set correctly',
             call. = F, immediate. = T)
