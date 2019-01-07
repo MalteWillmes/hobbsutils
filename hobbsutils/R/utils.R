@@ -4,6 +4,8 @@
 }
 
 ec_2_sal = function(temp, cond){
+  if(is.na(temp)){return(NA)}
+  if(is.na(cond)){return(NA)}
   ref_cond = 42914
   cond_rat = cond/ref_cond
   rt = 0.6766097 +
