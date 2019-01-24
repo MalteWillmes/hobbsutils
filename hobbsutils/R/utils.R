@@ -4,7 +4,7 @@
 }
 
 ec_2_sal = function(temp, cond){
-  if (any(temp > 35)) {
+  if (any(temp > 35, na.rm = T)) {
     warning('Temperature is high, ensure that units are in degrees C', call. = F, immediate. = T)
   }
   ref_cond = 42914
@@ -20,7 +20,7 @@ ec_2_sal = function(temp, cond){
 
 
 sr_2_sal = function(sr, srfw = 0.705264, srmar = 0.70918,confw = 74.6, conmar = 6819,salfw = 0.1,salmar = 31.8){
-  if (any(sr < min(srfw, srmar)| sr > max(srfw, srmar))) {
+  if (any(sr < min(srfw, srmar)| sr > max(srfw, srmar), na.rm = T)) {
     warning('Some of your measured strontium ratio values are outside the bounds of your two endmembers, make sure that srfw and srmar are set correctly',
             call. = F, immediate. = T)
   }
@@ -31,7 +31,7 @@ sr_2_sal = function(sr, srfw = 0.705264, srmar = 0.70918,confw = 74.6, conmar = 
 }
 
 sal_2_sr = function(sal, srfw = 0.705264, srmar = 0.70918, confw = 74.6, conmar = 6819, salfw = 0.1, salmar = 31.8) {
-  if(any(sal < min(salfw, salmar) | sal > max(salfw, salmar))) {
+  if(any(sal < min(salfw, salmar) | sal > max(salfw, salmar), na.rm = T)) {
     warning('Some of your measured salinity values are outside the bounds of your two endmembers, make sure that salfw and salmar are set correctly',
             call. = F, immediate. = T)
   }
