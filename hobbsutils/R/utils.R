@@ -18,6 +18,19 @@ ec_2_sal = function(temp, cond){
   return(sal)
 }
 
+sal_2_spc = function(sal){
+  if (any(sal > 40, na.rm = T)){
+    warning("Salinity is high, ensure that data is correct")
+  }
+  J1 = -16.072
+  J2 = 4.1495
+  J3 = -0.5345
+  J4 = 0.0261
+  spc = (sal/35)*(53087) + sal*(sal-35) *
+    (J1 + (J2 * (sal^(0.5))) + (J3*sal) + (J4*(sal^(1.5))))
+  return(spc)
+}
+
 
 sr_2_sal = function(sr, srfw = 0.705264, srmar = 0.70918,confw = 74.6, conmar = 6819,salfw = 0.1,salmar = 31.8){
   if (any(sr < min(srfw, srmar)| sr > max(srfw, srmar), na.rm = T)) {
