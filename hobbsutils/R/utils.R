@@ -57,3 +57,13 @@ sal_2_sr = function(sal, srfw = 0.705264, srmar = 0.70918, confw = 74.6, conmar 
 bim = function(fl, hl, gt) {
   fl + ((gt - max(gt))*(fl - hl))/(max(gt) - min(gt))
 }
+
+membermix = function(sr, conc, mix) {
+  if(sum(mix) != 1) {
+    warning('Your mixture does not sum to 100%',
+            call. = F, immediate. = T)
+  }
+  srmix = sum(sr*conc*mix)/sum(conc*mix)
+  srconc = sum(conc*mix)
+  return(c(srmix, srconc))
+}
