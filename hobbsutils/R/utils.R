@@ -67,3 +67,22 @@ membermix = function(sr, conc, mix) {
   srconc = sum(conc*mix)
   return(c(srmix, srconc))
 }
+
+l2l = function(from,to,measurement,lengths,species){
+  if(species %in% c('LONSME', 'DELSME')) {
+    if(measurement == 'SL') {
+      if(from == 'ETOH' & to == 'FIELD') {
+        calclength = (lengths* 1.05793) + 0.97646
+      } else if(from == 'FIELD' & to == 'ETOH') {
+        calclength = (lengths * 0.91736) + 97900
+      }
+    } else if(measurement== 'FL') {
+      if(from == 'ETOH' & to == 'FIELD') {
+        calclength = (lengths* 1.0225) + 0.336769
+      } else if(from == 'FIELD' & to == 'ETOH') {
+        calclength = (lengths * 0.972129) + 0.227886
+      }
+    }
+  }
+  return(calclength)
+}
