@@ -58,13 +58,14 @@ bim = function(fl, hl, gt) {
   fl + ((gt - max(gt))*(fl - hl))/(max(gt) - min(gt))
 }
 
-membermix = function(sr, conc, mix) {
+membermix = function(sr, conc, sal, mix) {
   if(sum(mix) != 1) {
     warning('Your mixture does not sum to 100%',
             call. = F, immediate. = T)
   }
   srmix = sum(sr*conc*mix)/sum(conc*mix)
   srconc = sum(conc*mix)
+  salmix = sum(sal*mix)
   return(c(srmix, srconc))
 }
 
