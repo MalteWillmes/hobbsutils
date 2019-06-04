@@ -14,7 +14,7 @@ membermix(sr, conc, sal, mix)
 \arguments{
   \item{sr}{a numeric vector of the sr ratios of the endmembers}
   \item{conc}{a numeric vector of the sr concentrations of the endmembers}
-  \itme{sal}{a numeric vector of the salinties of the endmembers}
+  \item{sal}{a numeric vector of the salinties of the endmembers}
   \item{mix}{a numeric vector of the relative contributions of the endmembers (needs to sum to 1)}
 }
 \details{
