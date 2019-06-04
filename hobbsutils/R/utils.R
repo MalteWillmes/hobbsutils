@@ -66,7 +66,7 @@ membermix = function(sr, conc, sal, mix) {
   srmix = sum(sr*conc*mix)/sum(conc*mix)
   srconc = sum(conc*mix)
   salmix = sum(sal*mix)
-  return(c(srmix, srconc))
+  return(c(srmix, srconc, salmix))
 }
 
 l2l = function(from,to,measurement,lengths,species){
