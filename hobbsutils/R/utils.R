@@ -32,13 +32,15 @@ sal_2_spc = function(sal){
 }
 
 
-sr_2_sal = function(sr, srfw = 0.705264, srmar = 0.70918,confw = 74.6, conmar = 6819,salfw = 0.1,salmar = 31.8){
+sr_2_sal = function(sr, srfw = 0.705264, srmar = 0.70918,confw = 74.6, conmar = 6819,salfw = 0.1,salmar = 31.8, sallim){
   if (any(sr < min(srfw, srmar)| sr > max(srfw, srmar), na.rm = T)) {
     warning('Some of your measured strontium ratio values are outside the bounds of your two endmembers, make sure that srfw and srmar are set correctly',
             call. = F, immediate. = T)
   }
+  if (is.na(sallim)) stop('You have not set a high salinity limit (sallim argument)')
     sal = (((salfw*srmar*conmar) - (salfw*sr*conmar) - (salmar*srmar*conmar) + (salmar*sr*conmar))/
              ((sr*confw) - (sr*conmar) - (srfw*confw) + (srmar*conmar))) + salmar
+    sal = ifelse(sal > sallim, sallim, sal)
     return(sal)
 
 }
