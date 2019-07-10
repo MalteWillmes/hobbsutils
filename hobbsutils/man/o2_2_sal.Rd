@@ -35,7 +35,7 @@ Cosmochim Acta. 1996;60(3):455‐467. https://doi.org/10.1016/0016‐
 McLaughlin K, Kendall C, Silva SR, Young M, Paytan A. Phosphate
 oxygen isotope ratios as a tracer for sources and cycling of
 phosphate in North San Francisco Bay, California. J Geophys Res
-Biogeo. 2006;111(3):1‐12. https://doi.org/10.1029/2005 JG000079
+Biogeo. 2006;111(3):1‐12. https://doi.org/10.1029/2005JG000079
 }
 \author{
 %%  ~~who you are~~
