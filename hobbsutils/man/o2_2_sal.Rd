@@ -12,8 +12,8 @@ o2_2_sal(oxy_rat, source)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{oxy_rat}{ is the measured Oxygen isotope ratio }
-  \item{source}{ is the desired source function. Currently only 'ingram' and 'mclg' are supported.}
+  \item{oxy_rat}{is the measured Oxygen isotope ratio}
+  \item{source}{is the desired source function. Currently only 'ingram' and 'mclg' are supported.}
 }
 \details{
 %%  ~~ If necessary, more details than the description above ~~
@@ -48,12 +48,7 @@ Biogeo. 2006;111(3):1‐12. https://doi.org/10.1029/2005JG000079
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
 
-## The function is currently defined as
-function (x)
 {
   }
 }
