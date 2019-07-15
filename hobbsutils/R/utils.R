@@ -58,9 +58,16 @@ sal_2_sr = function(sal, srfw = 0.705264, srmar = 0.70918, confw = 74.6, conmar 
 }
 
 o2_2_sal = function(oxy_rat, source = 'ingram') {
-  sal = ifelse(source == 'ingram',((oxy_rat+10.9)/0.32),
-               ifelse(source == 'mclg', ((oxy_rat+10.17)/0.29),
-                      'improper source selected'))
+  if(source == 'ingram') {
+    sal = (oxy_rat + 10.9)/0.32
+  } else if(source == 'mclg') {
+    sal = (oxy_rat + 10.17)/0.29
+  } else{
+    warning('Non-supported source')
+  }
+  # sal = ifelse(source == 'ingram',((oxy_rat+10.9)/0.32),
+  #              ifelse(source == 'mclg', ((oxy_rat+10.17)/0.29),
+  #                     'improper source selected'))
   return(sal)
 }
 
