@@ -20,6 +20,8 @@ sr_2_sal(sr, srfw = 0.705781, srmar = 0.70918, confw = 103.8, conmar = 7900, sal
   \item{conmar}{Concentration (parts per million) of Strontium in the ocean (or endmember 2).}
   \item{salfw}{Salinity of freshwater (or endmember 1).}
   \item{salmar}{Salinity of the ocean (or endmember 2).}
+  \item{sallim}{Limit of ability to accurately distinguish different salinities.}
+  \item{fill}{what to replace calculated values that exceed the sallim value (e.g. "NA" or 7).}
 }
 \details{
 %%  ~~ If necessary, more details than the description above ~~
