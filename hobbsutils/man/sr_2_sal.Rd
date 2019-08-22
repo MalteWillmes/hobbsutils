@@ -29,7 +29,7 @@ sr_2_sal(sr, srfw = 0.705781, srmar = 0.70918, confw = 103.8, conmar = 7900, sal
 \value{
 %%  ~Describe the value returned
 %%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
+
 %%  \item{comp2 }{Description of 'comp2'}
 %% ...
 }
