@@ -129,18 +129,59 @@ l2l = function(from,to,measurement,lengths,species){
   return(calclength)
 }
 
-colnamefun <- function(x,y){
+colmatch <- function(x,y){
   if (all(colnames(x) %in% colnames(y)) & all(colnames(y) %in% colnames(x))) {
     return('All column names match between both objects')
-  } else if (!all(colnames(x) %in% colnames(y)) & all(colnames(y) %in% colnames(x))) {
-    cat("\n\n",'columns','"',
-        colnames(x)[!colnames(x) %in% colnames(y)],'"', " are missing from second object\n")
+  } else if (!all(colnames(x) %in% colnames(y))
+             & all(colnames(y) %in% colnames(x))) {
+    if(length(colnames(x)[!colnames(x) %in% colnames(y)]) > 1) {
+      cat("\n\n",'columns ')
+      cat(colnames(x)[!colnames(x) %in% colnames(y)], sep = " and ")
+      cat( " are missing from second object\n")
+    } else {
+      cat("\n\n",'column ')
+      cat(colnames(x)[!colnames(x) %in% colnames(y)], sep = " and ")
+      cat( " is missing from second object\n")
+    }
   } else if (all(colnames(x) %in% colnames(y)) & !all(colnames(y) %in% colnames(x))){
-    cat("\n\n", "columns",'"',
-        colnames(y)[!colnames(y) %in% colnames(x)],'"', " are missing from first object\n")
+    if(length(colnames(y)[!colnames(y) %in% colnames(x)]) > 1) {
+      cat("\n\n",'columns ')
+      cat(colnames(y)[!colnames(y) %in% colnames(x)], sep = " and ")
+      cat( " are missing from first object\n")
+    } else {
+      cat("\n\n",'column ')
+      cat(colnames(y)[!colnames(y) %in% colnames(x)], sep = " and ")
+      cat( " is missing from first object\n")
+    }
   } else if (!all(colnames(x) %in% colnames(y)) & !all(colnames(y) %in% colnames(x))){
-  cat("\n\n","columns",'"',
-      colnames(x)[!colnames(x) %in% colnames(y)],'"', " are missing from second object and\n",
-      'columns','"',colnames(y)[!colnames(y) %in% colnames(x)],'"', "are missing from first object\n\n")
+    if(length(colnames(y)[!colnames(y) %in% colnames(x)]) > 1 & length(colnames(x)[!colnames(x) %in% colnames(y)]) > 1) {
+      cat("\n\n",'columns ')
+      cat(colnames(y)[!colnames(y) %in% colnames(x)], sep = " and ")
+      cat(' are missing from first object \n and')
+      cat('\n','columns ')
+      cat(colnames(x)[!colnames(x) %in% colnames(y)], sep = " and ")
+      cat( " are missing from second object\n")
+    } else if(length(colnames(y)[!colnames(y) %in% colnames(x)]) > 1 & length(colnames(x)[!colnames(x) %in% colnames(y)]) == 1){
+      cat("\n\n",'columns ')
+      cat(colnames(y)[!colnames(y) %in% colnames(x)], sep = " and ")
+      cat(' are missing from first object \n and')
+      cat('\n','column ')
+      cat(colnames(x)[!colnames(x) %in% colnames(y)], sep = " and ")
+      cat( " is missing from second object\n")
+    } else if(length(colnames(y)[!colnames(y) %in% colnames(x)]) == 1 & length(colnames(x)[!colnames(x) %in% colnames(y)]) > 1){
+      cat("\n\n",'column ')
+      cat(colnames(y)[!colnames(y) %in% colnames(x)], sep = " and ")
+      cat(' is missing from first object \n and')
+      cat('\n','columns ')
+      cat(colnames(x)[!colnames(x) %in% colnames(y)], sep = " and ")
+      cat( " are missing from second object\n")
+    } else {
+      cat("\n\n",'column ')
+      cat(colnames(y)[!colnames(y) %in% colnames(x)], sep = " and ")
+      cat(' is missing from first object \n and')
+      cat('\n','column ')
+      cat(colnames(x)[!colnames(x) %in% colnames(y)], sep = " and ")
+      cat( " is missing from second object\n")
+    }
   }
 }
