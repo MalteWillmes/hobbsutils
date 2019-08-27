@@ -49,20 +49,12 @@ sr_2_sal = function(sr, srfw = 0.705264, srmar = 0.70918,confw = 74.6, conmar = 
   if (is.na(sallim)) stop('You have not set a high salinity limit (sallim argument)')
     sal = (((salfw*srmar*conmar) - (salfw*sr*conmar) - (salmar*srmar*conmar) + (salmar*sr*conmar))/
              ((sr*confw) - (sr*conmar) - (srfw*confw) + (srmar*conmar))) + salmar
-    if(sal > sallim) {
-      sal = sallim
-    } else {
-      sal = sal
-    }
-    if (sr > srmar & fill == 'NA') {
-      sal = NA
-    } else if (sr > srmar & fill == 'sallim') {
-      sal = sallim
-    } else {
-      sal = sal
+    if(fill == 'NA') {
+      sal[sal > sallim] = sallim
+    } else if (fill == 'sallim') {
+      sal [sal > sallim] = 'NA'
     }
     return(sal)
-
 }
 
 sal_2_sr = function(sal, srfw = 0.705264, srmar = 0.70918, confw = 74.6, conmar = 6819, salfw = 0.1, salmar = 31.8) {
