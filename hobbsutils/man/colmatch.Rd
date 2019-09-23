@@ -8,16 +8,22 @@ Check if any column names are missing between two objects
 This function will examine the column names of two provided objects and will return the names of any missing columns and which object is missing which columns
 }
 \usage{
-colnamefun(x,y)
+colnamefun(x,y, match = F, join = F)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{x}{
-First object with column names (generally a dataframe).
+Name of first object with column names (generally a dataframe).
 }
   \item{y}{
-Second object with column names (gnerally a dataframe).
+Name of second object with column names (gnerally a dataframe).
 }
+  \item(match){
+  expects logical value either T/TRUE or F/FALSE
+  }
+  \item(join) {
+  expects logical value either T/TRUE or F/FALSE
+  }
 }
 \details{
 %%  ~~ If necessary, more details than the description above ~~
@@ -25,8 +31,8 @@ Second object with column names (gnerally a dataframe).
 \value{
 %%  ~Describe the value returned
 %%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
+  \item{match }{Wether to return columns that match or return columns that are missing. Match = F/FALSE is default and will return missing columns. Match == T/TRUE will return matching columns.}
+  \item{join }{  Wether or not to format return values for use in joining. Default is join = F/False. This will return the results formatted for legibility in the console and WILL NOT WORK FOR JOINING. Join = T/True will format the results more simply so that it is legible by the "by" argument in functions like left_join(). }
 %% ...
 }
 \references{

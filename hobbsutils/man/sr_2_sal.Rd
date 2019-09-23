@@ -30,7 +30,9 @@ sr_2_sal(sr, srfw = 0.705781, srmar = 0.70918, confw = 103.8, conmar = 7900, sal
 %%  ~Describe the value returned
 %%  If it is a LIST, use
 
-%%  \item{comp2 }{Description of 'comp2'}
+%%  \item{sr }{If the Sr value is more than the machine error rate (of the ICPMS machine used at UC DAVIS) outside of the srfw and srmar values, it will be returned as NA. }
+    \item{sallim}{The user designated salinity resolution limit. Calculated sainities above this value will be replaced by the fill argument}
+    \item{fill }{Fill argument excepts either "NA" or "sallim". If NA, values above the sallim will be replaced with NA. If "sallim", valuese above the sallim with be replaced with the sallim. }
 %% ...
 }
 \references{
