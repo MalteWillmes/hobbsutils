@@ -50,10 +50,11 @@ sr_2_sal = function(sr, srfw = 0.705264, srmar = 0.70918,confw = 74.6, conmar = 
     sal = (((salfw*srmar*conmar) - (salfw*sr*conmar) - (salmar*srmar*conmar) + (salmar*sr*conmar))/
              ((sr*confw) - (sr*conmar) - (srfw*confw) + (srmar*conmar))) + salmar
     if(fill == 'NA') {
-      sal[sal > sallim] = sallim
+      sal[sal > sallim] = NA
     } else if (fill == 'sallim') {
-      sal [sal > sallim] = 'NA'
+      sal [sal > sallim] = sallim
     }
+    sal[sr < (srfw - 0.0005) | sr > srmar + 0.0005] = NA
     return(sal)
 }
 
@@ -121,8 +122,8 @@ l2l = function(from,to,measurement,lengths,species){
   return(calclength)
 }
 
-colmatch <- function(x,y, match = T){
-  if (match == T) {
+colmatch <- function(x,y, match = F, join = F){
+  if (match == T & join == F) {
     if (all(colnames(x) %in% colnames(y)) & all(colnames(y) %in% colnames(x))) {
       return('All column names match between both objects')
     } else if (any(colnames(x) %in% colnames(y))) {
@@ -134,7 +135,7 @@ colmatch <- function(x,y, match = T){
       cat(colnames(x)[!colnames(x) %in% colnames(y)], sep = " and ")
       cat( " are matching between both objects\n")
     }
-  } else if(match == F) {
+  } else if(match == F & join == F) {
     if (all(colnames(x) %in% colnames(y)) & all(colnames(y) %in% colnames(x))) {
       return('All column names match between both objects')
     } else if (!all(colnames(x) %in% colnames(y))
@@ -189,8 +190,10 @@ colmatch <- function(x,y, match = T){
         cat( " is missing from second object\n")
       }
     }
-  } else {
-    cat('Imporper selection of match argument, select either "TRUE/T" or "FALSE/F')
+  } else if (match == T & join == T) {
+    colnames(x[colnames(x) %in% colnames(y)])
+    } else {
+    cat('Imporper selection of match argument, select either "TRUE/T" or "FALSE/F. If join is set to true, match must also be T)')
   }
 
 }
