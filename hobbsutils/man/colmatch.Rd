@@ -12,17 +12,13 @@ colnamefun(x,y, match = F, join = F)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{x}{
-Name of first object with column names (generally a dataframe).
+  \item{x}{Name of first object with column names (generally a dataframe).
 }
-  \item{y}{
-Name of second object with column names (gnerally a dataframe).
+  \item{y}{Name of second object with column names (gnerally a dataframe).
 }
-  \item(match){
-  expects logical value either T/TRUE or F/FALSE
+  \item{match}{expects logical value either T/TRUE or F/FALSE
   }
-  \item(join) {
-  expects logical value either T/TRUE or F/FALSE
+  \item{join} {expects logical value either T/TRUE or F/FALSE
   }
 }
 \details{
