@@ -1,20 +1,29 @@
 \name{colmatch}
 \alias{colmatch}
 %- Also NEED an '\alias' for EACH other topic documented here.
-\title{Check if any column names are missing between two objects
+\title{Return matching or missing columns between two objects.
+%%  ~~function to do ... ~~
 }
 \description{
-This function will examine the column names of two provided objects and will return the names of any missing columns and which object is missing which columns
+%%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
-colmatch(x,y, match = F, join = F)
+colmatch(x,y,match = F, join = F)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{x}{Name of first object with column names (generally a dataframe).}
-  \item{y}{Name of second object with column names (gnerally a dataframe).}
-  \item{match}{expects logical value either T/TRUE or F/FALSE}
-  \item{join} {expects logical value either T/TRUE or F/FALSE}
+  \item{x}{a dataframe or other object with named columns
+%%     ~~Describe \code{x} here~~
+}
+  \item{y}{a dataframe or other object with named columns
+  
+  }
+  \item{match}{whether or not to return matching columns as opposed to missing columns. Default = F
+  
+  }
+  \item{join}{wether or not to return simplified results for use in functions such as left_join()
+  
+  }
 }
 \details{
 %%  ~~ If necessary, more details than the description above ~~
@@ -22,8 +31,8 @@ colmatch(x,y, match = F, join = F)
 \value{
 %%  ~Describe the value returned
 %%  If it is a LIST, use
-  \item{match }{Wether to return columns that match or return columns that are missing. Match = F/FALSE is default and will return missing columns. Match == T/TRUE will return matching columns.}
-  \item{join }{  Wether or not to format return values for use in joining. Default is join = F/False. This will return the results formatted for legibility in the console and WILL NOT WORK FOR JOINING. Join = T/True will format the results more simply so that it is legible by the "by" argument in functions like left_join(). }
+%%  \item{comp1 }{Description of 'comp1'}
+%%  \item{comp2 }{Description of 'comp2'}
 %% ...
 }
 \references{
@@ -47,7 +56,7 @@ colmatch(x,y, match = F, join = F)
 ##--	or do  help(data=index)  for the standard data sets.
 
 ## The function is currently defined as
-function (x)
+function (x) 
 {
   }
 }
