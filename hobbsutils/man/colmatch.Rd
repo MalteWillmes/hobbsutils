@@ -1,21 +1,23 @@
-\name{colnamefun}
-\alias{colnamefun}
+\name{colmatch}
+\alias{colmatch}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-Check if any column names are missing between two objects
+%%  ~~function to do ... ~~
 }
 \description{
-This function will examine the column names of two provided objects and will return the names of any missing columns and which object is missing which columns
+%%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
-colnamefun(x,y, match = F, join = F)
+colmatch(x, y)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{x}{Name of first object with column names (generally a dataframe).}
-  \item{y}{Name of second object with column names (gnerally a dataframe).}
-  \item{match}{expects logical value either T/TRUE or F/FALSE}
-  \item{join} {expects logical value either T/TRUE or F/FALSE}
+  \item{x}{
+%%     ~~Describe \code{x} here~~
+}
+  \item{y}{
+%%     ~~Describe \code{y} here~~
+}
 }
 \details{
 %%  ~~ If necessary, more details than the description above ~~
@@ -23,8 +25,8 @@ colnamefun(x,y, match = F, join = F)
 \value{
 %%  ~Describe the value returned
 %%  If it is a LIST, use
-  \item{match }{Wether to return columns that match or return columns that are missing. Match = F/FALSE is default and will return missing columns. Match == T/TRUE will return matching columns.}
-  \item{join }{  Wether or not to format return values for use in joining. Default is join = F/False. This will return the results formatted for legibility in the console and WILL NOT WORK FOR JOINING. Join = T/True will format the results more simply so that it is legible by the "by" argument in functions like left_join(). }
+%%  \item{comp1 }{Description of 'comp1'}
+%%  \item{comp2 }{Description of 'comp2'}
 %% ...
 }
 \references{
@@ -48,8 +50,81 @@ colnamefun(x,y, match = F, join = F)
 ##--	or do  help(data=index)  for the standard data sets.
 
 ## The function is currently defined as
-function (x)
+function (x, y) 
 {
+    if (all(colnames(x) \%in\% colnames(y)) & all(colnames(y) \%in\% 
+        colnames(x))) {
+        return("All column names match between both objects")
+    }
+    else if (!all(colnames(x) \%in\% colnames(y)) & all(colnames(y) \%in\% 
+        colnames(x))) {
+        if (length(colnames(x)[!colnames(x) \%in\% colnames(y)]) > 
+            1) {
+            cat("\n\n", "columns ")
+            cat(colnames(x)[!colnames(x) \%in\% colnames(y)], sep = " and ")
+            cat(" are missing from second object\n")
+        }
+        else {
+            cat("\n\n", "column ")
+            cat(colnames(x)[!colnames(x) \%in\% colnames(y)], sep = " and ")
+            cat(" is missing from second object\n")
+        }
+    }
+    else if (all(colnames(x) \%in\% colnames(y)) & !all(colnames(y) \%in\% 
+        colnames(x))) {
+        if (length(colnames(y)[!colnames(y) \%in\% colnames(x)]) > 
+            1) {
+            cat("\n\n", "columns ")
+            cat(colnames(y)[!colnames(y) \%in\% colnames(x)], sep = " and ")
+            cat(" are missing from first object\n")
+        }
+        else {
+            cat("\n\n", "column ")
+            cat(colnames(y)[!colnames(y) \%in\% colnames(x)], sep = " and ")
+            cat(" is missing from first object\n")
+        }
+    }
+    else if (!all(colnames(x) \%in\% colnames(y)) & !all(colnames(y) \%in\% 
+        colnames(x))) {
+        if (length(colnames(y)[!colnames(y) \%in\% colnames(x)]) > 
+            1 & length(colnames(x)[!colnames(x) \%in\% colnames(y)]) > 
+            1) {
+            cat("\n\n", "columns ")
+            cat(colnames(y)[!colnames(y) \%in\% colnames(x)], sep = " and ")
+            cat(" are missing from first object \n and")
+            cat("\n", "columns ")
+            cat(colnames(x)[!colnames(x) \%in\% colnames(y)], sep = " and ")
+            cat(" are missing from second object\n")
+        }
+        else if (length(colnames(y)[!colnames(y) \%in\% colnames(x)]) > 
+            1 & length(colnames(x)[!colnames(x) \%in\% colnames(y)]) == 
+            1) {
+            cat("\n\n", "columns ")
+            cat(colnames(y)[!colnames(y) \%in\% colnames(x)], sep = " and ")
+            cat(" are missing from first object \n and")
+            cat("\n", "column ")
+            cat(colnames(x)[!colnames(x) \%in\% colnames(y)], sep = " and ")
+            cat(" is missing from second object\n")
+        }
+        else if (length(colnames(y)[!colnames(y) \%in\% colnames(x)]) == 
+            1 & length(colnames(x)[!colnames(x) \%in\% colnames(y)]) > 
+            1) {
+            cat("\n\n", "column ")
+            cat(colnames(y)[!colnames(y) \%in\% colnames(x)], sep = " and ")
+            cat(" is missing from first object \n and")
+            cat("\n", "columns ")
+            cat(colnames(x)[!colnames(x) \%in\% colnames(y)], sep = " and ")
+            cat(" are missing from second object\n")
+        }
+        else {
+            cat("\n\n", "column ")
+            cat(colnames(y)[!colnames(y) \%in\% colnames(x)], sep = " and ")
+            cat(" is missing from first object \n and")
+            cat("\n", "column ")
+            cat(colnames(x)[!colnames(x) \%in\% colnames(y)], sep = " and ")
+            cat(" is missing from second object\n")
+        }
+    }
   }
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
