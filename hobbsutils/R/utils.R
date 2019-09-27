@@ -54,7 +54,7 @@ sr_2_sal = function(sr, srfw = 0.705264, srmar = 0.70918,confw = 74.6, conmar = 
     } else if (fill == 'sallim') {
       sal [sal > sallim] = sallim
     }
-    sal[sr < (srfw - 0.0005) | sr > srmar + 0.0005] = NA
+    sal[sr < (srfw - 0.00005) | sr > srmar + 0.00005] = NA
     return(sal)
 }
 
