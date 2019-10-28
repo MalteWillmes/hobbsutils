@@ -103,24 +103,45 @@ membermix = function(sr, conc, sal, mix) {
   return(list(sr = srmix, conc = srconc, sal = salmix))
 }
 
-l2l = function(from,to,measurement,lengths,species){
-  if(species %in% c('LONSME', 'DELSME')) {
-    if(measurement == 'SL') {
-      if(from == 'ETOH' & to == 'FIELD') {
-        calclength = (lengths* 1.05793) + 0.97646
-      } else if(from == 'FIELD' & to == 'ETOH') {
-        calclength = (lengths * 0.91736) + 97900
-      }
-    } else if(measurement== 'FL') {
-      if(from == 'ETOH' & to == 'FIELD') {
-        calclength = (lengths* 1.0225) + 0.336769
-      } else if(from == 'FIELD' & to == 'ETOH') {
-        calclength = (lengths * 0.972129) + 0.227886
-      }
-    }
+
+l2l = function(from, to = 'flf',length) {
+  if(from == 'slf' & to == 'flf') {
+    calclength = 1.09*(length)-0.97
+  } else if (from == 'slf' & to == 'tlf') {
+    calclength = 1.21*length-2.17
+  } else if (from == 'tlf' & to == 'flf') {
+    calclength = (length-0.36)/1.08
+  } else if (from == 'tlf' & to == 'slf') {
+    calclength = (length+2.17)/1.21
+  } else if (from == 'flf' & to == 'slf') {
+    calclength = (length+0.97)/1.09
+  } else if (from == 'flf' & to == 'tlf') {
+    calclength = 1.08*length+0.36
+  } else if (from == 'sle' & to == 'flf') {
+    intercalc = (length-0.64)/0.94
+    calclength = 1.09*(intercalc)-0.97
+  } else if (from == 'sle' & to == 'tlf') {
+    intercalc = (length-0.64)/0.94
+    calclength = 1.21*intercalc-2.17
+  } else if (from == 'sle' & to == 'slf') {
+    calclength = (length-0.64)/0.94
+  } else if (from == 'fle' & to == 'flf') {
+    calclength = (length-3.09)/0.94
+  } else if (from == 'fle' & to == 'slf') {
+    intercalc = (length-3.09)/0.94
+    calclength = (intercalc+0.97)/1.09
+  } else if (from == 'fle' & to == 'tlf') {
+    intercalc = (length-3.09)/0.94
+    calclength = 1.08*intercalc+0.36
+  } else {
+    stop('Unsupported conversion', call. = F)
+  }
+  if(any(length < 40)) {
+    warning("Some lengths outside of established conversion bounds", call. = F)
   }
   return(calclength)
 }
+
 
 colmatch <- function(x,y, match = F, join = F){
   if (match == T & join == F) {
