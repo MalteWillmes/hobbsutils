@@ -139,7 +139,7 @@ l2l = function(from, to = 'flf',length) {
   if(any(length < 40)) {
     warning("Some lengths outside of established conversion bounds", call. = F)
   }
-  return(calclength)
+  return(round(calclength,1))
 }
 
 
