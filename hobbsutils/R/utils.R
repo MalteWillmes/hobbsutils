@@ -136,7 +136,7 @@ l2l = function(from, to = 'flf',length) {
   } else {
     stop('Unsupported conversion', call. = F)
   }
-  if(any(length < 40)) {
+  if(any(length < 40, na.rm = T)) {
     warning("Some lengths outside of established conversion bounds", call. = F)
   }
   return(round(calclength,1))
