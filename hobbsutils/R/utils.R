@@ -106,37 +106,38 @@ membermix = function(sr, conc, sal, mix) {
 
 l2l = function(from, to = 'flf',length) {
   if(from == 'slf' & to == 'flf') {
-    calclength = 1.09*(length)-0.97
+    calclength = 1.083269*(length)-0.108321
   } else if (from == 'slf' & to == 'tlf') {
-    calclength = 1.21*length-2.17
+    calclength = 1.202167*length-1.767735
   } else if (from == 'tlf' & to == 'flf') {
-    calclength = (length-0.36)/1.08
+    calclength = 0.887283*length+2.509126
   } else if (from == 'tlf' & to == 'slf') {
-    calclength = (length+2.17)/1.21
+    calclength = 0.833486*length+1.247493
   } else if (from == 'flf' & to == 'slf') {
-    calclength = (length+0.97)/1.09
+    calclength = 0.921682*length+0.178945
   } else if (from == 'flf' & to == 'tlf') {
-    calclength = 1.08*length+0.36
+    calclength = 1.1190*length-2.3275
   } else if (from == 'sle' & to == 'flf') {
-    intercalc = (length-0.64)/0.94
-    calclength = 1.09*(intercalc)-0.97
+    ## used sle-fle-flf instead of sle-slf-flf because the sle-slf model is considerably worse than the sle-fle model
+    intercalc = 1.085190*length+1.462598 #sle to fle
+    calclength = 1.051787*intercalc-2.694040 #fle to flf
   } else if (from == 'sle' & to == 'tlf') {
-    intercalc = (length-0.64)/0.94
-    calclength = 1.21*intercalc-2.17
+    intercalc = 1.03898*length+1.18353 #sle to slf
+    calclength = 1.202167*intercalc-1.767735 #slf to tlf
   } else if (from == 'sle' & to == 'slf') {
-    calclength = (length-0.64)/0.94
+    calclength = 1.03898*length+1.18353
   } else if (from == 'fle' & to == 'flf') {
-    calclength = (length-3.09)/0.94
+    calclength = 1.051787*length-2.694040
   } else if (from == 'fle' & to == 'slf') {
-    intercalc = (length-3.09)/0.94
-    calclength = (intercalc+0.97)/1.09
+    intercalc = 1.051787*length-2.694040 # fle to flf
+    calclength = 0.921682*intercalc+0.178945 #flf to slf
   } else if (from == 'fle' & to == 'tlf') {
-    intercalc = (length-3.09)/0.94
-    calclength = 1.08*intercalc+0.36
+    intercalc = 1.051787*length-2.694040
+    calclength = 1.1190*intercalc-2.3275
   } else {
     stop('Unsupported conversion', call. = F)
   }
-  if(any(length < 40, na.rm = T)) {
+  if(any(length < 20 | length > 120, na.rm = T)) {
     warning("Some lengths outside of established conversion bounds", call. = F)
   }
   return(round(calclength,1))
